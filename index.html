@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding-top: 50px;
+            background: url('back1.jpg') center center / cover fixed no-repeat;
+            color: black;
+        }
+        .logo-container {
+            text-align: center;
+            width: 100%;
+        }
+        .logo-container img {
+            max-width: 200px;
+            border-radius: 8px;
+        }
+        .form-container, .content-container, .navbar {
+            width: 400px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .navbar {
+            text-align: center;
+            display: none;
+        }
+        .navbar a {
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+            padding: 14px 20px;
+            font-size: 1.2em;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            background-color: #fff;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .content-container {
+            display: none;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .active {
+            display: block;
+        }
+.approval-letter {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .approval-letter p {
+        margin: 10px 0;
+    }
+    .approval-letter strong {
+        color: #007bff;
+    }
+    .approval-letter hr {
+        margin-top: 20px;
+        border: 0;
+        height: 1px;
+        background: #ccc;
+    }
+.side-logos {
+        position: fixed;
+        top: 20%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1000;
+    }
+    .left-logos {
+        left: 10px;
+    }
+    .right-logos {
+        right: 10px;
+    }
+    .side-logos img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="logoproject3.jpg" alt="Logo">
+    </div>
+    <div class="navbar" id="navbar">
+        <a href="#" onclick="toggleContent('profile')">Profile</a>
+        <a href="#" onclick="toggleContent('resume')">Resume</a>
+        <a href="#" onclick="toggleContent('jobs')">Jobs</a>
+        <a href="#" onclick="toggleContent('search')">Search</a>
+<a href="#" onclick="toggleContent('recommend')">Recommend</a>
+        <a href="#" onclick="toggleContent('lead')">Lead</a>
+        
+    </div>
+    <div id="loginForm" class="form-container">
+        <h2>Login Form</h2>
+        <form id="loginDetailsForm" onsubmit="submitLogin(event)">
+            <table>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" placeholder="Enter your name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" placeholder="Enter your email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="mobile">Mobile:</label></td>
+                    <td><input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required></td>
+                </tr>
+                <tr>
+                    <td><label for="place">Place:</label></td>
+                    <td><input type="text" id="place" name="place" placeholder="Enter your place" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" placeholder="Enter your password" required></td>
+                </tr>
+            </table>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="profile" class="content-container">
+    <h2>Profile Section</h2>
+    <form id="profileForm">
+        <table>
+            <tr>
+                <td><label for="profileName">Name:</label></td>
+                <td><input type="text" id="profileName" name="profileName"></td>
+            </tr>
+            <tr>
+                <td><label for="profileEmail">Email:</label></td>
+                <td><input type="email" id="profileEmail" name="profileEmail"></td>
+            </tr>
+            <tr>
+                <td><label for="profileMobile">Mobile:</label></td>
+                <td><input type="tel" id="profileMobile" name="profileMobile"></td>
+            </tr>
+            <tr>
+                <td><label for="profilePlace">Place:</label></td>
+                <td><input type="text" id="profilePlace" name="profilePlace"></td>
+            </tr>
+            <tr>
+                <td><label for="profilePassword">Password:</label></td>
+                <td><input type="password" id="profilePassword" name="profilePassword"></td>
+            </tr>
+        </table>
+        <button type="button" onclick="saveProfile()">Save Changes</button>
+    </form>
+</div>
+<div id="resume" class="content-container">
+    <h2>Resume Section</h2>
+    <form id="resumeForm" onsubmit="saveResume(event)">
+        <table>
+            <tr>
+                <td><label for="resumeEducation">Education:</label></td>
+                <td><input type="text" id="resumeEducation" name="resumeEducation" placeholder="Enter your education" required></td>
+            </tr>
+            <tr>
+                <td><label for="resumeExperience">Work Experience:</label></td>
+                <td><input type="text" id="resumeExperience" name="resumeExperience" placeholder="Enter your experience" required></td>
+            </tr>
+            <tr>
+                <td><label for="resumeSkills">Skills:</label></td>
+                <td><input type="text" id="resumeSkills" name="resumeSkills" placeholder="Enter your skills" required></td>
+            </tr>
+            <tr>
+                <td><label for="resumeCertifications">Certifications:</label></td>
+                <td><input type="text" id="resumeCertifications" name="resumeCertifications" placeholder="Enter certifications" required></td>
+            </tr>
+            <tr>
+                <td><label for="resumeLanguages">Languages:</label></td>
+                <td><input type="text" id="resumeLanguages" name="resumeLanguages" placeholder="Enter languages known" required></td>
+            </tr>
+            <tr>
+                <td><label for="resumeProjects">Projects:</label></td>
+                <td><input type="text" id="resumeProjects" name="resumeProjects" placeholder="Enter projects done" required></td>
+            </tr>
+        </table>
+        <button type="submit">Save Resume</button>
+    </form>
+</div>
+<div id="jobs" class="content-container">
+    <h2>Jobs Section</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Job</th>
+                <th>Skills</th>
+                <th>Qualification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Google</td>
+                <td>Software Engineer</td>
+                <td>Java, Cloud Computing</td>
+                <td>B.Tech in Computer Science</td>
+            </tr>
+            <tr>
+                <td>Microsoft</td>
+                <td>Data Scientist</td>
+                <td>Python, Machine Learning</td>
+                <td>M.Sc in Data Science</td>
+            </tr>
+            <tr>
+                <td>Amazon</td>
+                <td>Backend Developer</td>
+                <td>Java, AWS</td>
+                <td>B.Tech in IT</td>
+            </tr>
+            <tr>
+                <td>Facebook</td>
+                <td>Frontend Developer</td>
+                <td>JavaScript, Python</td>
+                <td>B.Sc in Computer Science</td>
+            </tr>
+            <tr>
+                <td>Netflix</td>
+                <td>DevOps Engineer</td>
+                <td>Python, CI/CD</td>
+                <td>B.Tech in ECE</td>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>Mobile App Developer</td>
+                <td>Java, Swift</td>
+                <td>B.Tech in Computer Science</td>
+            </tr>
+            <tr>
+                <td>IBM</td>
+                <td>AI Engineer</td>
+                <td>Python, Deep Learning</td>
+                <td>M.Tech in Artificial Intelligence</td>
+            </tr>
+            <tr>
+                <td>Adobe</td>
+                <td>UI/UX Designer</td>
+                <td>JavaScript, Python</td>
+                <td>B.Des in Design</td>
+            </tr>
+            <tr>
+                <td>Tesla</td>
+                <td>System Analyst</td>
+                <td>Python, SQL</td>
+                <td>B.Tech in Computer Science</td>
+            </tr>
+            <tr>
+                <td>Oracle</td>
+                <td>Database Administrator</td>
+                <td>Java, PL/SQL</td>
+                <td>B.Tech in IT</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="search" class="content-container">
+    <h2>Search Section</h2>
+    <input type="text" id="searchBar" placeholder="Search for jobs, skills, or company..." oninput="searchJobs()">
+    <div id="searchResults"></div>
+</div>
+<div id="lead" class="content-container">
+    <h2>Job Approval Letters</h2>
+    <div>
+        <input type="text" id="companyName" placeholder="Company Name" required>
+        <input type="text" id="jobTitle" placeholder="Job Title" required>
+        <input type="text" id="applicantName" placeholder="Applicant Name" required>
+        <textarea id="letterContent" placeholder="Letter Content" required></textarea>
+        <button onclick="saveApprovalLetter()">Save Approval Letter</button>
+    </div>
+
+    <h3>Saved Approval Letters</h3>
+    <div id="approvalLetters"></div>
+</div>
+
+<div id="recommend" class="content-container">
+    <h2>Recommended Jobs</h2>
+    <div id="recommendedJobs"></div>
+    <h3>Saved Jobs</h3>
+    <ul id="savedJobsList"></ul>
+</div>
+<div class="side-logos left-logos">
+    <img src="logo1.jpeg" alt="Logo 1">
+    <img src="logo2.jpg" alt="Logo 2">
+    <img src="logo3.jpg" alt="Logo 3">
+    <img src="logo4.jpg" alt="Logo 4">
+    <img src="logo5.jpg" alt="Logo 5">
+</div>
+<div class="side-logos right-logos">
+    <img src="logo6.jpg" alt="Logo 6">
+    <img src="logo7.jpg" alt="Logo 7">
+    <img src="logo8.jpg" alt="Logo 8">
+    <img src="logo9.jpg" alt="Logo 9">
+    <img src="logo10.jpg" alt="Logo 10">
+</div>
+    <script>
+        function submitLogin(event) {
+            event.preventDefault();
+            localStorage.setItem("loginName", document.getElementById("name").value);
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("navbar").style.display = "block";
+        }
+
+        function toggleContent(sectionId) {
+            const section = document.getElementById(sectionId);
+            const isActive = section.classList.contains('active');
+            document.querySelectorAll('.content-container').forEach(el => el.classList.remove('active'));
+            if (!isActive) {
+                section.classList.add('active');
+            }
+        }
+    function submitLogin(event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const mobile = document.getElementById("mobile").value;
+    const place = document.getElementById("place").value;
+    const password = document.getElementById("password").value;
+    localStorage.setItem("loginName", name);
+    localStorage.setItem("loginEmail", email);
+    localStorage.setItem("loginMobile", mobile);
+    localStorage.setItem("loginPlace", place);
+    localStorage.setItem("loginPassword", password);
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("navbar").style.display = "block";
+    document.getElementById("profileName").value = name;
+    document.getElementById("profileEmail").value = email;
+    document.getElementById("profileMobile").value = mobile;
+    document.getElementById("profilePlace").value = place;
+    document.getElementById("profilePassword").value = password;
+}
+function toggleContent(sectionId) {
+    const section = document.getElementById(sectionId);
+    const isActive = section.classList.contains('active');
+    document.querySelectorAll('.content-container').forEach(el => el.classList.remove('active'));
+    if (!isActive) {
+        section.classList.add('active');
+    }
+}
+function saveProfile() {
+    alert('Profile details updated successfully!');
+}
+function saveResume(event) {
+    event.preventDefault();
+    const education = document.getElementById("resumeEducation").value;
+    const experience = document.getElementById("resumeExperience").value;
+    const skills = document.getElementById("resumeSkills").value;
+    const certifications = document.getElementById("resumeCertifications").value;
+    const languages = document.getElementById("resumeLanguages").value;
+    const projects = document.getElementById("resumeProjects").value;
+    localStorage.setItem("resumeEducation", education);
+    localStorage.setItem("resumeExperience", experience);
+    localStorage.setItem("resumeSkills", skills);
+    localStorage.setItem("resumeCertifications", certifications);
+    localStorage.setItem("resumeLanguages", languages);
+    localStorage.setItem("resumeProjects", projects);
+    alert("Resume details saved successfully!");
+}
+const jobData = [
+    { company: "Google", job: "Software Engineer", skills: "Java, Cloud Computing", qualification: "B.Tech in Computer Science" },
+    { company: "Microsoft", job: "Data Scientist", skills: "Python, Machine Learning", qualification: "M.Sc in Data Science" },
+    { company: "Amazon", job: "Backend Developer", skills: "Java, AWS", qualification: "B.Tech in IT" },
+    { company: "Facebook", job: "Frontend Developer", skills: "JavaScript, Python", qualification: "B.Sc in Computer Science" },
+    { company: "Netflix", job: "DevOps Engineer", skills: "Python, CI/CD", qualification: "B.Tech in ECE" },
+    { company: "Apple", job: "Mobile App Developer", skills: "Java, Swift", qualification: "B.Tech in Computer Science" },
+    { company: "IBM", job: "AI Engineer", skills: "Python, Deep Learning", qualification: "M.Tech in Artificial Intelligence" },
+    { company: "Adobe", job: "UI/UX Designer", skills: "JavaScript, Python", qualification: "B.Des in Design" },
+    { company: "Tesla", job: "System Analyst", skills: "Python, SQL", qualification: "B.Tech in Computer Science" },
+    { company: "Oracle", job: "Database Administrator", skills: "Java, PL/SQL", qualification: "B.Tech in IT" }
+];
+function searchJobs() {
+    const searchInput = document.getElementById("searchBar").value.toLowerCase();
+    const resultsContainer = document.getElementById("searchResults");
+    resultsContainer.innerHTML = "";
+    const filteredJobs = jobData.filter(job =>
+        job.company.toLowerCase().includes(searchInput) ||
+        job.job.toLowerCase().includes(searchInput) ||
+        job.skills.toLowerCase().includes(searchInput) ||
+        job.qualification.toLowerCase().includes(searchInput)
+    );
+    if (filteredJobs.length > 0) {
+        const resultsTable = document.createElement("table");
+        resultsTable.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Job</th>
+                    <th>Skills</th>
+                    <th>Qualification</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${filteredJobs.map(job => `
+                    <tr>
+                        <td>${job.company}</td>
+                        <td>${job.job}</td>
+                        <td>${job.skills}</td>
+                        <td>${job.qualification}</td>
+                    </tr>
+                `).join("")}
+            </tbody>
+        `;
+        resultsContainer.appendChild(resultsTable);
+    } else {
+        resultsContainer.innerHTML = "<p>No matching jobs found.</p>";
+    }
+}
+function recommendJobs() {
+    const userSkills = localStorage.getItem("resumeSkills")?.toLowerCase().split(",") || [];
+    const userQualification = localStorage.getItem("resumeEducation")?.toLowerCase() || "";
+    const recommendedJobsContainer = document.getElementById("recommendedJobs");
+    recommendedJobsContainer.innerHTML = "";
+const recommendedJobs = jobData.filter(job => {
+        const jobSkills = job.skills.toLowerCase().split(",");
+        const matchSkills = userSkills.some(skill => jobSkills.includes(skill.trim()));
+        const matchQualification = job.qualification.toLowerCase().includes(userQualification.trim());
+        return matchSkills || matchQualification;
+    });
+    if (recommendedJobs.length > 0) {
+        recommendedJobs.forEach((job, index) => {
+            const jobCard = document.createElement("div");
+            jobCard.classList.add("job-card");
+            jobCard.innerHTML = `
+                <table>
+                    <tr><td><strong>Company:</strong></td><td>${job.company}</td></tr>
+                    <tr><td><strong>Job:</strong></td><td>${job.job}</td></tr>
+                    <tr><td><strong>Skills:</strong></td><td>${job.skills}</td></tr>
+                    <tr><td><strong>Qualification:</strong></td><td>${job.qualification}</td></tr>
+                </table>
+                <p><strong>Description:</strong> ${job.job} at ${job.company} requires skills like ${job.skills}. Candidates with qualifications in ${job.qualification} are preferred.</p>
+                <button onclick="saveJob(${index})">Save Job</button>
+                <hr>
+            `;
+            recommendedJobsContainer.appendChild(jobCard);
+        });
+    } else {
+        recommendedJobsContainer.innerHTML = "<p>No jobs match your resume data.</p>";
+    }
+}
+function saveJob(index) {
+    const savedJobsList = document.getElementById("savedJobsList");
+    const selectedJob = jobData[index];
+    if ([...savedJobsList.children].some(li => li.textContent.includes(selectedJob.job))) {
+        alert("Job already saved!");
+        return;
+    }
+    const jobItem = document.createElement("li");
+    jobItem.textContent = `${selectedJob.job} at ${selectedJob.company}`;
+    savedJobsList.appendChild(jobItem);
+    alert("Job saved successfully!");
+}
+document.getElementById("recommend").addEventListener("click", recommendJobs);
+function displayApprovalLetters() {
+    const savedJobsList = document.getElementById("savedJobsList");
+    const approvalLettersContainer = document.getElementById("approvalLetters");
+    approvalLettersContainer.innerHTML = "";
+    if (savedJobsList.children.length > 0) {
+        Array.from(savedJobsList.children).forEach(jobItem => {
+            const [jobTitle, companyName] = jobItem.textContent.split(" at ");
+            const letter = document.createElement("div");
+            letter.classList.add("approval-letter");
+            letter.innerHTML = `
+                <p><strong>${companyName}</strong></p>
+                <p>Date: ${new Date().toLocaleDateString()}</p>
+                <p>Dear Applicant,</p>
+                <p>We are pleased to inform you that you have been shortlisted for the position of <strong>${jobTitle}</strong> at <strong>${companyName}</strong>.</p>
+                <p>We look forward to discussing your qualifications and the role in further detail during your interview.</p>
+                <p>Please contact our HR team to confirm your availability for the interview at the earliest.</p>
+                <p>Best regards,</p>
+                <p><strong>${companyName} Recruitment Team</strong></p>
+                <hr>
+            `;
+            approvalLettersContainer.appendChild(letter);
+        });
+    } else {
+        approvalLettersContainer.innerHTML = "<p>No saved jobs available for approval letters.</p>";
+    }
+}
+
+document.getElementById("lead").addEventListener("click", displayApprovalLetters);
+   // Function to save the approval letter
+function saveApprovalLetter() {
+    const companyName = document.getElementById("companyName").value;
+    const jobTitle = document.getElementById("jobTitle").value;
+    const applicantName = document.getElementById("applicantName").value;
+    const letterContent = document.getElementById("letterContent").value;
+
+    fetch('http://localhost:3000/save-approval-letter', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            company_name: companyName,
+            job_title: jobTitle,
+            applicant_name: applicantName,
+            letter_content: letterContent
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert('Approval letter saved successfully');
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+// Function to fetch and display approval letters
+function fetchApprovalLetters() {
+    fetch('http://localhost:3000/get-approval-letters')
+        .then(response => response.json())
+        .then(data => {
+            const approvalLettersContainer = document.getElementById("approvalLetters");
+            approvalLettersContainer.innerHTML = ""; // Clear existing content
+
+            data.forEach(letter => {
+                const letterDiv = document.createElement("div");
+                letterDiv.classList.add("approval-letter");
+                letterDiv.innerHTML = `
+                    <p><strong>${letter.company_name}</strong></p>
+                    <p><strong>Job Title:</strong> ${letter.job_title}</p>
+                    <p><strong>Applicant Name:</strong> ${letter.applicant_name}</p>
+                    <p><strong>Letter Content:</strong> ${letter.letter_content}</p>
+                    <p><strong>Date:</strong> ${letter.approval_date}</p>
+                    <hr>
+                `;
+                approvalLettersContainer.appendChild(letterDiv);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Call fetchApprovalLetters on page load to display all approval letters
+window.onload = fetchApprovalLetters;
+ 
+
+</script>
+</body>
+</html>   
